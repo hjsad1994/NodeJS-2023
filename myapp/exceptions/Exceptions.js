@@ -6,8 +6,10 @@ export default class Exception extends Error {
     static USER_EXIST = "User already exists"
     static CANNOT_REGISTER_USER = "Can't register user"
     static WRONG_EMAIL_OR_PASSWORD = "Wrong email or password"
-    constructor(message) {
+    static CANNOT_INSERT_STUDENT = ''
+    constructor(message, validationErrors) {
         super(message)
         print(message, OutputType.ERROR)
+        this.validationErrors = validationErrors
     }
 }

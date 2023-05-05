@@ -7,7 +7,6 @@ import Exception from '../exceptions/Exceptions.js';
 import  express from 'express';
 // Create a new eventEmitter object
 const myEvent = new eventEmitter();
-
 // Add a listener to the eventEmitter to listen to the 'event.register.user' event
 myEvent.on('event.register.user', (params) => {
     console.log(`they talked about: ${JSON.stringify(params)}`)

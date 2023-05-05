@@ -8,7 +8,6 @@ async function connect() {
         return connect
     } catch (err) {
         const { code } = err
-        debugger
         if (err.code == 8000) {
             throw new Exception(Exception.WRONG_DB_USERNAME_PASSWORD)
         }

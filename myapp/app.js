@@ -7,7 +7,7 @@ import connect from './database/database.js'
 import checkToken from './authenication/auth.js';
 
 // Cấu hình middleware để sử dụng JSON parser cho các request body
-app.use(checkToken) // shield 
+app.use(checkToken) // shiled , guard
 app.use(express.json())
 // Thiết lập cổng để server lắng nghe các kết nối
 const port = process.env.PORT ?? 3000
