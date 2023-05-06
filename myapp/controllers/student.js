@@ -41,15 +41,24 @@ async function insertStudent(req, res) {
 
     } catch (exception) {
         res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json({
-            message: "cannot insert student"+exception,
-            vali
+            message: "cannot insert student" + exception,
+            validationErrors: exception.validationErrors
         })
         debugger
     }
+}
+async function generateFakeStudents(req, res) {
+    await studentRepository.generateFakeStudents(req.body)
+    res.status(HttpStatusCode.INSERT_OK).json({
+        message: "insert student successfully",
+    })
+    debugger
+
 }
 export default {
     getAllStudent,
     getStudentById,
     updateStudent,
-    insertStudent
+    insertStudent,
+    generateFakeStudents
 }

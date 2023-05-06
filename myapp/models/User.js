@@ -13,6 +13,7 @@ export default mongoose.model('User',
         },
         email: {
             type: String,
+            required: true,
             validate: {
                 validator: (value) => isEmail,
                 message: 'Email is incorrect format'

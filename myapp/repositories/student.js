@@ -1,5 +1,6 @@
 import Exception from '../exceptions/Exceptions.js'
 import { Student } from '../models/index.js'
+import { faker } from '@faker-js/faker';
 const getAllStudents = async ({
     page,
     size,
@@ -42,36 +43,25 @@ const insertStudent = async ({
     // }
 
 }
-// const insertStudent = async ({
-//     name,
-//     email,
-//     languages,
-//     gender,
-//     phoneNumber,
-//     address
-// }) => {
-//     //console.log('insert student')
-//     try {
-//         debugger
-//         const student = await Student.create({
-//             name,
-//             email,
-//             languages,
-//             gender,
-//             phoneNumber,
-//             address
-//         })
-//         return student
-//     } catch (exception) {
-//         if (!!exception.errors) {
-//             //error from validations
-//             throw new Exception('Input error', exception.errors)
-//         }
-//         debugger
-//     }
-//     debugger
-// }
+async function generateFakeStudents() {
+    let fakeStudents = []
+    for (let i = 0; i < 500; i++) {
+        let fakestudent = {
+            name: `${faker.internet.userName() + '-faker'}`,
+            email: faker.internet.email(),
+            languages: [faker.helpers.arrayElement(['Japanese', 'English', 'Vietnamese']),
+            faker.helpers.arrayElement(['Chinese', 'French', 'Vietnamese']) // array
+            ],
+            gender: faker.helpers.arrayElement(['Male', 'Female']),
+            phoneNumber: faker.phone.number(),
+            address: faker.address.city()
+        }
+        fakeStudents.push(fakestudent)
+    }
+    await Student.insertMany(fakeStudents)
+}
 export default {
     getAllStudents,
-    insertStudent
+    insertStudent,
+    generateFakeStudents
 } 
