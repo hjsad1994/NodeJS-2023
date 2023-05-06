@@ -20,7 +20,7 @@ app.use('/students', studentsRouter)
 app.get('/', (req, res) => {
   res.send("hello nodejs")
 });
-
+// test
 // Khởi động server và lắng nghe các kết nối trên cổng được chỉ định, in ra log khi server bắt đầu lắng nghe
 app.listen(port, async () => {
   await connect()
